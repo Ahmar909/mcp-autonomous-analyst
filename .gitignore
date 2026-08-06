@@ -1,0 +1,11 @@
+# .gitignore
+.env
+.venv/
+__pycache__/
+# Local Environment Variables & Secrets
+.env
+*.env
+gemini.env
+
+# Local Databases (keeps your raw analytics local if you don't want it public)
+*.db
