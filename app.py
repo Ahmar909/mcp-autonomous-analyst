@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import os
 
 # 1. Page Configuration & Styling
 st.set_page_config(page_title="Autonomous AI Data Analyst", page_icon="📊", layout="wide")
@@ -35,7 +36,7 @@ if user_prompt := st.chat_input("Ask me about company metrics, financial data, o
         
         try:
             # Send payload to your local FastAPI server running on port 8000
-            backend_url = "http://127.0.0.1:8000/chat"
+            backend_url = os.environ.get("backend_url","https://mcp-analyst-backend.onrender.com")
             payload = {"prompt": user_prompt}
             
             reply = requests.post(backend_url, json=payload, timeout=60)
