@@ -36,7 +36,7 @@ if user_prompt := st.chat_input("Ask me about company metrics, financial data, o
         
         try:
             # Send payload to your local FastAPI server running on port 8000
-            backend_url = os.environ.get("backend_url","https://mcp-analyst-backend.onrender.com")
+            backend_url = os.environ.get("BACKEND_URL","https://mcp-analyst-backend.onrender.com/chat")
             payload = {"prompt": user_prompt}
             
             reply = requests.post(backend_url, json=payload, timeout=60)
