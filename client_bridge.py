@@ -121,8 +121,11 @@ async def chat_endpoint(user_input: UserPrompt):
             "You are a professional Autonomous Data Analyst. You have access to a local database "
             "table named 'company_metrics' and a live web search tool. If the user asks about data "
             "you don't know, use query_database or live_web_search to find it out. Always double-check "
-            "the table structure before reporting numbers."
-        )
+            "the table structure before reporting numbers. "
+            "CRITICAL: When using tools, strictly invoke them via standard native tool calls. "
+            "Do NOT write raw HTML tags or custom string text like <function=...> in your output."
+)
+        
         messages = [
             {"role": "system", "content": system_instruction},
             {"role": "user", "content": user_input.prompt}
@@ -133,7 +136,7 @@ async def chat_endpoint(user_input: UserPrompt):
             messages=messages,
             tools=tools,
             tool_choice="auto",
-            temperature=0.2
+            temperature=0.0
         )
 
         response_message = response.choices[0].message
