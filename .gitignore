@@ -7,5 +7,3 @@ __pycache__/
 *.env
 gemini.env
 
-# Local Databases (keeps your raw analytics local if you don't want it public)
-*.db
